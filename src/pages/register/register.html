@@ -16,7 +16,7 @@
 <ion-content padding center text-center>
 
 
-<h1>¿CÓMO TE LLAMAS?</h1>
+  <h1>¿CÓMO TE LLAMAS?</h1>
   <ion-list>
     <ion-item>
       <ion-input placeholder="Nombre" [(ngModel)]="strName"></ion-input>
@@ -26,12 +26,15 @@
       <ion-input placeholder="Apellido" [(ngModel)]="strLastName"></ion-input>
     </ion-item>
 
-  <p>¡Quiero recibir noticias, ofertas y recompensas!</p>
+    <p>¡Quiero recibir noticias, ofertas y recompensas!</p>
 
 
-  <ion-checkbox color="white" checked="true" [(ngModel)] = "bOffers"></ion-checkbox>
+    <ion-checkbox color="white" checked="true" [(ngModel)]="bOffers"></ion-checkbox>
 
-
+    <h1>¿CUÁL ES TU EMAIL?</h1>
+    <ion-item>
+      <ion-input placeholder="email" [(ngModel)]="strEmail"></ion-input>
+    </ion-item>
 
 
   </ion-list>

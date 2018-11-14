@@ -20,6 +20,7 @@ export class RegisterPage {
   strName: string;
   strLastName: string;
   bOffers: boolean;
+  strEmail: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
@@ -45,22 +46,27 @@ export class RegisterPage {
     //console.log("Checked " + this.bOffers);
 
 
-        if (this.strName == '' || this.strLastName == '' || this.strName == undefined || this.strLastName == undefined
-          || this.strName.length < 2 || this.strLastName.length < 2) {
-          const alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: 'Favor de llenar los campos',
-            buttons: ['OK']
-          });
-          alert.present();
+    if (this.strName == '' || this.strLastName == '' || this.strName == undefined || this.strLastName == undefined
+      || this.strName.length < 2 || this.strLastName.length < 2
+      || this.strEmail == undefined
+      || this.strEmail.length < 2) {
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'Favor de llenar los campos',
+        buttons: ['OK']
+      });
+      alert.present();
 
-          return;
-        }
+      return;
+    }
+
+    console.log("Email " + this.strEmail);
 
     this.navCtrl.push(Register2Page, {
       strName: this.strName,
       strLastName: this.strLastName,
-      bOffers: this.bOffers
+      bOffers: this.bOffers,
+      strEmail: this.strEmail
     });
 
 

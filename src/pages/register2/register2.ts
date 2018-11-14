@@ -23,6 +23,7 @@ export class Register2Page {
   strMonth: string;
   strYear: string;
   bOffers: boolean;
+  strEmail: string;
   jsonData: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
@@ -30,6 +31,7 @@ export class Register2Page {
     this.strName = navParams.get('strName');
     this.strLastName = navParams.get('strLastName');
     this.bOffers = navParams.get('bOffers');
+    this.strEmail = navParams.get('strEmail');
   }
 
   ionViewDidLoad() {
@@ -49,6 +51,7 @@ export class Register2Page {
     console.log("Month " + this.strMonth);
     console.log("Year " + this.strYear);
     console.log("Offers " + this.bOffers);
+    console.log("Email " + this.strEmail);
 
     //let jsonData: string = JSON.stringify(this.strName, this.strLastName);
 
@@ -56,7 +59,9 @@ export class Register2Page {
     if (this.strName == '' || this.strLastName == '' || this.strName == undefined || this.strLastName == undefined
       || this.strName.length < 2 || this.strLastName.length < 2
       || this.strMonth == '' || this.strYear == '' || this.strMonth == undefined || this.strYear == undefined
-      || this.strMonth.length < 2 || this.strYear.length < 2) {
+      || this.strMonth.length < 2 || this.strYear.length < 2
+      || this.strEmail == undefined
+      || this.strEmail.length < 2) {
       const alert = this.alertCtrl.create({
         title: 'Error',
         subTitle: 'Favor de llenar los campos',
@@ -79,7 +84,8 @@ export class Register2Page {
       strMonth: this.strMonth,
       strYear: this.strYear,
       bOffers: this.bOffers,
-      jsonData: this.jsonData
+      jsonData: this.jsonData,
+      strEmail: this.strEmail 
     });
 
 

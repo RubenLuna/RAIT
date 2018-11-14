@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the Register3Page page.
@@ -23,6 +24,7 @@ export class Register3Page {
   strGender: string;
   bOffers: boolean;
   jsonData: string;
+  strEmail: string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
@@ -33,6 +35,7 @@ export class Register3Page {
     this.strYear = navParams.get('strYear');
     this.bOffers = navParams.get('bOffers');
     this.jsonData = navParams.get('jsonData');
+    this.strEmail = navParams.get('strEmail');
 
   }
 
@@ -54,7 +57,9 @@ export class Register3Page {
       || this.strMonth == '' || this.strYear == '' || this.strMonth == undefined || this.strYear == undefined
       || this.strMonth.length < 2 || this.strYear.length < 2
       || this.strGender == '' || this.strGender == undefined
-      || this.strGender.length < 1) {
+      || this.strGender.length < 1
+      || this.strEmail == undefined
+      || this.strEmail.length < 2) {
       const alert = this.alertCtrl.create({
         title: 'Error',
         subTitle: 'Favor de llenar los campos',
@@ -71,7 +76,11 @@ export class Register3Page {
     console.log("Year " + this.strYear);
     console.log("Gender " + this.strGender);
     console.log("Offers " + this.bOffers);
+    console.log("Email " + this.strEmail);
     console.log("jsonData " + this.jsonData);
+
+    this.navCtrl.push(HomePage);
+
 
   }
 
