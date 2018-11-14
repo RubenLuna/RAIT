@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 //import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { MainPage } from '../main/main';
+import { TestPage } from '../test/test';
+
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -29,6 +31,7 @@ export class HomePage {
       title: strTitle,
       subTitle: strSubtitle,
       buttons: ['OK']
+
     });
     alert.present();
 
@@ -65,10 +68,10 @@ export class HomePage {
     };
 
     let postData = new FormData();
-    postData.append('email',this.email );
+    postData.append('email', this.email);
     //postData.append('password', this.password);
 
-    let datos = { 'email': this.email, 'password': this.password};
+    let datos = { 'email': this.email, 'password': this.password };
 
 
 
@@ -95,6 +98,15 @@ export class HomePage {
   fxGoRegister() {
 
     this.navCtrl.push(RegisterPage);
+
+  }
+
+  fxGoTestMap() {
+
+    //<google-map></google-map>
+
+
+    this.navCtrl.push(TestPage);
 
   }
 

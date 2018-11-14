@@ -10,7 +10,9 @@ import { RegisterPage } from '../pages/register/register';
 import { Register2Page } from '../pages/register2/register2';
 import { Register3Page } from '../pages/register3/register3';
 import { MainPage } from '../pages/main/main';
+import { TestPage } from '../pages/test/test';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapComponent } from '../components/google-map/google-map';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterPage,
     Register2Page,
     Register3Page,
-    MainPage
+    MainPage,
+    GoogleMapComponent,
+    TestPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterPage,
     Register2Page,
     Register3Page,
-    MainPage
+    MainPage,
+    TestPage
   ],
   providers: [
     StatusBar,

@@ -9,12 +9,12 @@
   <ion-list>
 
   <ion-item>
-    <ion-label floating>email</ion-label>
-    <ion-input type="text"  [(ngModel)]="email"></ion-input>
+    <ion-label stacked  >Email</ion-label>
+    <ion-input   type="text"  [(ngModel)]="email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Password</ion-label>
+    <ion-label   stacked>Password</ion-label>
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
@@ -22,10 +22,12 @@
 
 
 
-      <button ion-button color="white" (click)="fxLogin()">Login</button>
+      <button ion-button class="clsbutton" color="white" (click)="fxLogin()">Login</button>
 
-      <button ion-button color="white" (click)="fxGoRegister()">Registro</button>
+      <button ion-button class="clsbutton" color="white" (click)="fxGoRegister()">Registro</button>
 
+
+      <button ion-button round  class="clsbutton" color="white" (click)="fxGoTestMap()">TEST MAP</button>
 
 
 

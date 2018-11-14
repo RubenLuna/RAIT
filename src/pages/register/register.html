@@ -26,22 +26,22 @@
       <ion-input placeholder="Apellido" [(ngModel)]="strLastName"></ion-input>
     </ion-item>
 
-    <p>¡Quiero recibir noticias, ofertas y recompensas!</p>
 
 
-    <ion-checkbox color="white" checked="true" [(ngModel)]="bOffers"></ion-checkbox>
 
-    <h1>¿CUÁL ES TU EMAIL?</h1>
     <ion-item>
-      <ion-input placeholder="email" [(ngModel)]="strEmail"></ion-input>
+      <ion-input placeholder="Email" [(ngModel)]="strEmail"></ion-input>
     </ion-item>
 
 
   </ion-list>
 
 
+  <p>¡Quiero recibir noticias, ofertas y recompensas!</p>
 
 
-  <button ion-button full color="white" (click)="fxRegister()">Aceptar</button>
+  <ion-checkbox color="white" checked="true" [(ngModel)]="bOffers"></ion-checkbox>
+
+  <button ion-button full round class="clsbutton" color="white" (click)="fxRegister()">Aceptar</button>
 
 </ion-content>
