@@ -1,14 +1,45 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding center text-center>
+  <ion-title>
+    <h1>RAIT</h1>
+  </ion-title>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+
+  <ion-list>
+
+  <ion-item>
+    <ion-label floating>emailssss</ion-label>
+    <ion-input type="text"  [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+
+
+      <button ion-button color="white" (click)="fxLogin()">Login</button>
+
+      <button ion-button color="white" (click)="fxGoRegister()">Registro</button>
+
+
+
+
+
+  <div class="sicons">
+
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left class="icon-circle-small"></ion-icon>
+      <ion-icon name="logo-facebook" item-left class="icon-circle-small"></ion-icon>
+    </ion-item>
+
+
+
+  </div>
+
+
 </ion-content>
