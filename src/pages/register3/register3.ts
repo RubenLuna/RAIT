@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { TestPage } from '../test/test';
 /**
  * Generated class for the Register3Page page.
  *
@@ -26,8 +28,10 @@ export class Register3Page {
   jsonData: string;
   strEmail: string;
 
+  data: Observable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http: HttpClient) {
 
     this.strName = navParams.get('strName');
     this.strLastName = navParams.get('strLastName');
@@ -42,6 +46,20 @@ export class Register3Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Register3Page');
   }
+
+
+  fxAlert(strTitle: string, strSubtitle: string) {
+
+    const alert = this.alertCtrl.create({
+      title: strTitle,
+      subTitle: strSubtitle,
+      buttons: ['OK']
+
+    });
+    alert.present();
+
+  }
+
 
   fxRegister3() {
 
@@ -79,7 +97,55 @@ export class Register3Page {
     console.log("Email " + this.strEmail);
     console.log("jsonData " + this.jsonData);
 
-    this.navCtrl.push(HomePage);
+
+    var url = 'http://192.168.1.70/RAIT/v1/registerUser.php';
+    //var url = 'https://jsonplaceholder.typicode.com/posts/1';
+
+
+
+    let options = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    };
+
+
+
+    let datos = {
+      'strName': this.strName,
+      'strLastName': this.strLastName,
+      'strMonth': this.strMonth,
+      'strYear': this.strYear,
+      'strGender': this.strGender,
+      'bOffers': this.bOffers,
+      'strEmail': this.strEmail
+    };
+
+
+
+    this.data = this.http.post(url, datos, options);
+    this.data.subscribe(data => {
+      console.log(data);
+      //this.navCtrl.push(MainPage);
+      /*if (data.error) {
+
+        this.fxAlert('Error', data.message);
+        return;
+
+      }else{
+      this.navCtrl.push(TestPage);
+    }*/
+    },
+      error => {
+        console.log(error);
+        this.fxAlert('Error', error);
+      });
+
+
+
+
+
+
 
 
   }

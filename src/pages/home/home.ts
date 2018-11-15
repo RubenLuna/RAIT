@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 //import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { MainPage } from '../main/main';
+import { Observable } from 'rxjs/Observable';
 import { TestPage } from '../test/test';
 
-import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'page-home',
@@ -67,28 +68,37 @@ export class HomePage {
       }
     };
 
-    let postData = new FormData();
-    postData.append('email', this.email);
+    //let postData = new FormData();
+    //postData.append('email', this.email);
     //postData.append('password', this.password);
 
     let datos = { 'email': this.email, 'password': this.password };
 
 
 
+   /*let datos = {
+      "jsonRaitData": [
+        { 'email': this.email, 'password': this.password },
+        ]
+    }*/
+
     this.data = this.http.post(url, datos, options);
     this.data.subscribe(data => {
       console.log(data);
       //this.navCtrl.push(MainPage);
-      /*if (data.error) {
+      if (data.error) {
 
         this.fxAlert('Error', data.message);
         return;
 
-      }*/
+      }else{
+        this.navCtrl.push(TestPage);
+      }
     },
       error => {
         console.log(error);
         this.fxAlert('Error', error);
+        return;
       });
 
 

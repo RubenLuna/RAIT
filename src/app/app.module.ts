@@ -13,6 +13,7 @@ import { MainPage } from '../pages/main/main';
 import { TestPage } from '../pages/test/test';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapComponent } from '../components/google-map/google-map';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { GoogleMapComponent } from '../components/google-map/google-map';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+
   ]
 })
 export class AppModule {}

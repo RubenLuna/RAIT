@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 
 @Component({
-  selector: 'google-map',
+  selector: 'div->google-map',
   templateUrl: 'google-map.html'
 })
 export class GoogleMapComponent {
@@ -24,7 +24,7 @@ export class GoogleMapComponent {
     //cd juarez lat long
     //31.73333, -106.48333
 
-    let coords = new google.maps.LatLng(31.73333, -106.48333);
+    let coords = new google.maps.LatLng(31.6653568, -106.397696);
     let mapOptions: google.maps.MapOptions = {
       center: coords,
       zoom: 16,
