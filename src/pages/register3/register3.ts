@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { TestPage } from '../test/test';
+import { MainPage } from '../main/main';
 /**
  * Generated class for the Register3Page page.
  *
@@ -27,6 +28,8 @@ export class Register3Page {
   bOffers: boolean;
   jsonData: string;
   strEmail: string;
+  strPassword: string;
+  strRePassword: string;
 
   data: Observable<any>;
 
@@ -77,7 +80,10 @@ export class Register3Page {
       || this.strGender == '' || this.strGender == undefined
       || this.strGender.length < 1
       || this.strEmail == undefined
-      || this.strEmail.length < 2) {
+      || this.strEmail.length < 2
+      || this.strPassword == '' || this.strPassword == undefined || this.strPassword.length < 2
+      || this.strRePassword == '' || this.strRePassword == undefined || this.strRePassword.length < 2
+      ) {
       const alert = this.alertCtrl.create({
         title: 'Error',
         subTitle: 'Favor de llenar los campos',
@@ -88,19 +94,30 @@ export class Register3Page {
       return;
     }
 
-    console.log("Name " + this.strName);
+    if( this.strPassword != this.strRePassword ){
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'La contrasenia no coincide',
+        buttons: ['OK']
+      });
+      alert.present();
+
+      return;
+
+    }
+
+    /*console.log("Name " + this.strName);
     console.log("Last Name " + this.strLastName);
     console.log("Month " + this.strMonth);
     console.log("Year " + this.strYear);
     console.log("Gender " + this.strGender);
     console.log("Offers " + this.bOffers);
     console.log("Email " + this.strEmail);
-    console.log("jsonData " + this.jsonData);
+    console.log("jsonData " + this.jsonData);*/
 
 
     var url = 'http://192.168.1.70/RAIT/v1/registerUser.php';
     //var url = 'https://jsonplaceholder.typicode.com/posts/1';
-
 
 
     let options = {
@@ -109,7 +126,7 @@ export class Register3Page {
       }
     };
 
-
+    //this.strPassword = 'asdtttPASS';
 
     let datos = {
       'strName': this.strName,
@@ -118,8 +135,10 @@ export class Register3Page {
       'strYear': this.strYear,
       'strGender': this.strGender,
       'bOffers': this.bOffers,
-      'strEmail': this.strEmail
+      'strEmail': this.strEmail,
+      'strPassword': this.strPassword
     };
+
 
 
 
@@ -127,18 +146,18 @@ export class Register3Page {
     this.data.subscribe(data => {
       console.log(data);
       //this.navCtrl.push(MainPage);
-      /*if (data.error) {
+      if (data.error) {
 
         this.fxAlert('Error', data.message);
         return;
 
-      }else{
-      this.navCtrl.push(TestPage);
-    }*/
+      } else {
+        this.navCtrl.push(MainPage);
+      }
     },
       error => {
         console.log(error);
-        this.fxAlert('Error', error);
+        this.fxAlert('Error', error.message);
       });
 
 

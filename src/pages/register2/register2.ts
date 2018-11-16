@@ -45,13 +45,14 @@ export class Register2Page {
 
     //alert(asd);
 
-
+/*
     console.log("Name " + this.strName);
     console.log("Last Name " + this.strLastName);
     console.log("Month " + this.strMonth);
     console.log("Year " + this.strYear);
     console.log("Offers " + this.bOffers);
     console.log("Email " + this.strEmail);
+    */
 
     //let jsonData: string = JSON.stringify(this.strName, this.strLastName);
 
@@ -74,7 +75,7 @@ export class Register2Page {
 
     this.jsonData = JSON.stringify({ strName: this.strName, strLastName: this.strLastName });
 
-    console.log("jsonData: " + this.jsonData);
+    //console.log("jsonData: " + this.jsonData);
 
 
 
@@ -85,7 +86,7 @@ export class Register2Page {
       strYear: this.strYear,
       bOffers: this.bOffers,
       jsonData: this.jsonData,
-      strEmail: this.strEmail 
+      strEmail: this.strEmail
     });
 
 

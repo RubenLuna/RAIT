@@ -9,7 +9,17 @@
   <ion-list>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-input [(ngModel)]="email" text-center type="text" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="password" text-center type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+
+<!--
+    <ion-item>
+      <ion-label floating>Email</ion-label>
       <ion-input type="text" [(ngModel)]="email"></ion-input>
     </ion-item>
 
@@ -17,6 +27,8 @@
       <ion-label stacked>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
+
+    -->
 
   </ion-list>
 
@@ -27,12 +39,12 @@
   <button ion-button class="clsbutton" color="white" (click)="fxGoRegister()">Registro</button>
 
 
-<div class="">
+  <div class="">
 
 
-      <button ion-button full round class="clsbutton" color="white" (click)="fxGoTestMap()">TEST MAP</button>
+    <button ion-button full round class="clsbutton" color="white" (click)="fxGoTestMap()">TEST MAP</button>
 
-</div>
+  </div>
 
 
 

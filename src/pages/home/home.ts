@@ -53,8 +53,8 @@ export class HomePage {
       return;
     }
 
-    console.log("Username: ", this.email);
-    console.log("Password: ", this.password);
+    //console.log("Username: ", this.email);
+    //console.log("Password: ", this.password);
 
     //var url = 'http://192.168.1.70/AguaOcho/v1/test.php';
     var url = 'http://192.168.1.70/RAIT/v1/loginUser.php';
@@ -92,7 +92,7 @@ export class HomePage {
         return;
 
       }else{
-        this.navCtrl.push(TestPage);
+        this.navCtrl.push(MainPage);
       }
     },
       error => {

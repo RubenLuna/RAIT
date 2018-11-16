@@ -60,7 +60,7 @@ export class RegisterPage {
       return;
     }
 
-    console.log("Email " + this.strEmail);
+    //console.log("Email " + this.strEmail);
 
     this.navCtrl.push(Register2Page, {
       strName: this.strName,
