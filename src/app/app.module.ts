@@ -10,10 +10,13 @@ import { RegisterPage } from '../pages/register/register';
 import { Register2Page } from '../pages/register2/register2';
 import { Register3Page } from '../pages/register3/register3';
 import { MainPage } from '../pages/main/main';
-import { TestPage } from '../pages/test/test';
+import { SearchridePage } from '../pages/searchride/searchride';
+import { FindridePage } from '../pages/findride/findride';
+
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapComponent } from '../components/google-map/google-map';
 import { Geolocation } from '@ionic-native/geolocation';
+import { TestPage } from '../pages/test/test';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     Register3Page,
     MainPage,
     GoogleMapComponent,
+    FindridePage,
     TestPage
   ],
   imports: [
@@ -45,6 +49,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     Register2Page,
     Register3Page,
     MainPage,
+    FindridePage,
     TestPage
   ],
   providers: [
