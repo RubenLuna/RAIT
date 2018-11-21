@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FindridePage } from '../findride/findride';
-import { SearchridePage } from '../searchride/searchride';
+import { GiveridePage } from '../giveride/giveride';
 import { TestPage } from '../test/test';
 /**
  * Generated class for the MainPage page.
@@ -24,13 +24,13 @@ export class MainPage {
     console.log('ionViewDidLoad MainPage');
   }
 
-  fxFindRide(){
+  fxGoFindRide(){
     this.navCtrl.push(FindridePage);
 
   }
 
-  fxSearchRide(){
-    this.navCtrl.push(SearchridePage);
+  fxGoGiveRide(){
+    this.navCtrl.push(GiveridePage);
 
   }
 

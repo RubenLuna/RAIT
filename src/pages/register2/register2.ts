@@ -41,7 +41,7 @@ export class Register2Page {
 
   fxRegister2() {
 
-    this.strMonth = document.getElementById('strMyMonth').innerText;
+    this.strMonth = document.getElementById('strMonth').innerText;
 
     //alert(asd);
 

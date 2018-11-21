@@ -10,7 +10,7 @@ import { RegisterPage } from '../pages/register/register';
 import { Register2Page } from '../pages/register2/register2';
 import { Register3Page } from '../pages/register3/register3';
 import { MainPage } from '../pages/main/main';
-import { SearchridePage } from '../pages/searchride/searchride';
+import { GiveridePage } from '../pages/giveride/giveride';
 import { FindridePage } from '../pages/findride/findride';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +28,7 @@ import { TestPage } from '../pages/test/test';
     MainPage,
     GoogleMapComponent,
     FindridePage,
+    GiveridePage,
     TestPage
   ],
   imports: [
@@ -50,6 +51,7 @@ import { TestPage } from '../pages/test/test';
     Register3Page,
     MainPage,
     FindridePage,
+    GiveridePage,
     TestPage
   ],
   providers: [

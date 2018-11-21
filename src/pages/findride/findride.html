@@ -19,38 +19,37 @@
 
     <ion-item>
       <ion-label>PUNTO DE PARTIDA</ion-label>
-      <ion-select [(ngModel)]="strfrFrom">
-        <ion-option value="m">Cd. Juarez</ion-option>
-        <ion-option value="f">Chihuahua</ion-option>
+      <ion-select [(ngModel)]="strfrFrom" (ionChange)="fxConsolelog()">
+        <ion-option *ngFor="let item of items" value="{{item.id}}" [selected]="false" >{{item.strCity}}</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label>A DONDE VAS</ion-label>
-      <ion-select [(ngModel)]="strfrWhere">
+      <ion-select [(ngModel)]="strfrWhere" (ionChange)="fxConsolelog()">
+        <ion-option *ngFor="let item of items" value="{{item.id}}" [selected]="false" (ionChange)="fxConsolelog()">{{item.strCity}}</ion-option>
 
-        <ion-option value="m">Cd. Juarez</ion-option>
-        <ion-option value="f">Chihuahua</ion-option>
       </ion-select>
     </ion-item>
 
 
-
-
-
     <ion-item>
       <ion-label>FECHA</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" id="strfrDate" [(ngModel)]="strfrDate"></ion-datetime>
+      <ion-datetime displayFormat="MMMM/DD/YYYY" pickerFormat="MMMM/DD/YYYY" id="strfrDate" [(ngModel)]="strfrDate" (ionChange)="fxConsolelog()"></ion-datetime>
     </ion-item>
 
 
 
-
-
-
-
-
   </ion-list>
+
+  <div class="">
+
+
+    <button ion-button full round class="clsbutton" color="white" (click)="fxFindRide()">BUSCAR RAIT</button>
+
+  </div>
+
 
 
 

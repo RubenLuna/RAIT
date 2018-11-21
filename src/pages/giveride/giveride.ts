@@ -3,8 +3,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
+
 /**
- * Generated class for the FindridePage page.
+ * Generated class for the GiveridePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,16 +13,19 @@ import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
-  selector: 'page-findride',
-  templateUrl: 'findride.html',
+  selector: 'page-giveride',
+  templateUrl: 'giveride.html',
 })
-export class FindridePage {
-
+export class GiveridePage {
   data: Observable<any>;
-  strfrFrom: string;
-  strfrWhere: string;
-  strfrDate: string;
+  strgrFrom: string;
+  strgrWhere: string;
+  strgrDate: string;
+  strgrHour: string
+  strEmail: string
+  intAuto: string
   items: any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http: HttpClient) {
 
@@ -29,8 +33,9 @@ export class FindridePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FindridePage');
+    console.log('ionViewDidLoad GiveridePage');
   }
+
 
   fxAlert(strTitle: string, strSubtitle: string) {
 
@@ -101,16 +106,62 @@ export class FindridePage {
 
   }
 
-  fxFindRide() {
+  fxGiveRide() {
 
+    if (this.strgrFrom == '' || this.strgrFrom == undefined || this.strgrFrom.length < 1 ||
+      this.strgrWhere == '' || this.strgrWhere == undefined || this.strgrWhere.length < 1 ||
+      this.strgrDate == '' || this.strgrDate == undefined || this.strgrDate.length < 1) {
+
+
+      this.fxAlert('Error', 'Favor de llenar los campos');
+      return;
+    }else{
+
+      var url = 'http://192.168.1.70/RAIT/v1/giveRide.php';
+
+      let options = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      };
+
+
+      let datos = { 'strgrFrom': this.strgrFrom, 'strgrWhere': this.strgrWhere, 'strgrDate': this.strgrDate, 'strEmail': this.strEmail, 'intAuto': this.intAuto };
+
+
+      this.data = this.http.post(url, datos, options);
+      this.data.subscribe(data => {
+        console.log(data);
+        if (data.error) {
+
+          this.fxAlert('Error', data.message);
+          return;
+
+        } else {
+
+          this.items = data.row;
+
+        }
+      },
+        error => {
+          console.log(error);
+          this.fxAlert('Error', error);
+          return;
+        });
+
+    }
 
   }
 
   fxConsolelog() {
-    console.log('From: ', this.strfrFrom);
-    console.log('Where: ', this.strfrWhere);
-    console.log('Date: ', this.strfrDate);
+    console.log('From: ', this.strgrFrom);
+    console.log('Where: ', this.strgrWhere);
+    console.log('Date: ', this.strgrDate);
+    console.log('Hour: ', this.strgrHour);
+
 
   }
+
+
 
 }
