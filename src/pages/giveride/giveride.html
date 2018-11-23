@@ -43,12 +43,21 @@
     </ion-item>
 
     <ion-item>
-      <ion-input [(ngModel)]="strEmail" text-center type="text" placeholder="Email"></ion-input>
+      <ion-input [(ngModel)]="strEmail" text-center type="text" placeholder="Email">asd@asd.com</ion-input>
     </ion-item>
 
+
     <ion-item>
-      <ion-input [(ngModel)]="intAuto" text-center type="text" placeholder="Auto">1</ion-input>
+      <ion-label>SELECCIONA TU AUTO 1</ion-label>
+      <ion-select [(ngModel)]="intAuto" (ionChange)="fxConsolelog()">
+        <ion-option *ngFor="let item of intAutos" value="{{item.strMake}}" [selected]="false">{{item.strMake}} {{item.strModel}} {{item.intYear}} {{item.strPlates}}</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
     </ion-item>
+
+  
+
+
 
   </ion-list>
 
@@ -57,7 +66,7 @@
   <div class="">
 
 
-    <button ion-button full round class="clsbutton" color="white" (click)="fxGiveRide()">DAR RAIT</button>
+    <button ion-button full round class="clsbutton" color="white" (click)="fxGetVehicles()">DAR RAIT</button>
 
   </div>
 

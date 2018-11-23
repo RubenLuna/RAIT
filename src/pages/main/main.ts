@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FindridePage } from '../findride/findride';
 import { GiveridePage } from '../giveride/giveride';
+import { AddvehiclePage } from '../addvehicle/addvehicle';
+
 import { TestPage } from '../test/test';
 /**
  * Generated class for the MainPage page.
@@ -31,6 +33,11 @@ export class MainPage {
 
   fxGoGiveRide(){
     this.navCtrl.push(GiveridePage);
+
+  }
+
+  fxGoAddVehicle(){
+    this.navCtrl.push(AddvehiclePage);
 
   }
 

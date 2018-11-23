@@ -1,0 +1,114 @@
+<!--
+  Generated template for the AddvehiclePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AGREGAR VEHICULO</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>MARCA</ion-label>
+      <ion-select [(ngModel)]="strMake" (ionChange)="fxSetModels(strMake)">
+        <ion-option *ngFor="let item of strMakes" value="{{item.make}}" [selected]="false">{{item.make}}</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>MODELO</ion-label>
+      <ion-select [(ngModel)]="strModel">
+        <ion-option *ngFor="let item of strModels" value="{{item.model}}" [selected]="false">{{item.model}}</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>YEAR</ion-label>
+      <ion-select [(ngModel)]="strYear">
+        <ion-option>2010</ion-option>
+        <ion-option>2011</ion-option>
+        <ion-option>2012</ion-option>
+        <ion-option>2013</ion-option>
+        <ion-option>2014</ion-option>
+        <ion-option>2015</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="strPlates" text-center type="text" placeholder="PLACAS"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>PUERTAS</ion-label>
+      <ion-select [(ngModel)]="strDoors">
+        <ion-option>1</ion-option>
+        <ion-option>2</ion-option>
+        <ion-option>3</ion-option>
+        <ion-option>4</ion-option>
+        <ion-option>5</ion-option>
+        <ion-option>6</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>ESPACIOS DISPONIBLES</ion-label>
+      <ion-select [(ngModel)]="strAvailableSeats">
+        <ion-option>1</ion-option>
+        <ion-option>2</ion-option>
+        <ion-option>3</ion-option>
+        <ion-option>4</ion-option>
+        <ion-option>5</ion-option>
+        <ion-option>6</ion-option>
+        <!-- ion-option value="f">Chihuahua</ion-option>-->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>A / C</ion-label>
+      <ion-toggle [(ngModel)]="strAC"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>ENTRADA AUXILIAR</ion-label>
+      <ion-toggle [(ngModel)]="strAux"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>BLUETOOTH</ion-label>
+      <ion-toggle [(ngModel)]="strBluetooth"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>CARGADOR DISPOSITIVOS</ion-label>
+      <ion-toggle [(ngModel)]="strCharger"></ion-toggle>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-input [(ngModel)]="strEmail" text-center type="text" placeholder="EMAIL"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+
+  <div class="">
+
+
+    <button ion-button full round class="clsbutton" color="white" (click)="fxAddVehicle()">AGREGAR VEHICULO</button>
+
+  </div>
+
+</ion-content>

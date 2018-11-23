@@ -3,9 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-
 /**
- * Generated class for the GiveridePage page.
+ * Generated class for the AddvehiclePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,34 +12,39 @@ import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
-  selector: 'page-giveride',
-  templateUrl: 'giveride.html',
+  selector: 'page-addvehicle',
+  templateUrl: 'addvehicle.html',
 })
-export class GiveridePage {
+export class AddvehiclePage {
+
+  strMake: string;
+  strModel: string;
+  intYear: number;
+  strPlates: string;
+  strDoors: string;
+  intAvailableSeats: number;
+  bAC: boolean;
+  bAux: boolean;
+  bBT: boolean;
+  bCharger: boolean;
+
+
+  strEmail: string;
+
   data: Observable<any>;
-  strgrFrom: string;
-  strgrWhere: string;
-  strgrDate: string;
-  strgrHour: string
-  strEmail: string
-  strTime: string;
-  intAuto: string
-  intAutos: any
-  items: any;
+
+  strMakes: any;
+  strModels: any;
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http: HttpClient) {
-
-    this.fxGetVehicles();
-    this.fxGetCities();
-
+    this.fxSetMakes();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GiveridePage');
+    console.log('ionViewDidLoad AddvehiclePage');
   }
-
 
   fxAlert(strTitle: string, strSubtitle: string) {
 
@@ -54,68 +58,13 @@ export class GiveridePage {
 
   }
 
-  fxGetVehicles() {
 
 
 
+  async fxSetMakes() {
 
-    var url = 'http://192.168.1.70/RAIT/v1/getVehicles.php';
-    //var url = 'https://jsonplaceholder.typicode.com/posts/1';
-
-
-
-    let options = {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    };
-
-    //let postData = new FormData();
-    //postData.append('email', this.email);
-    //postData.append('password', this.password);
-
-    this.strEmail = 'asd@asd.com';
-
-    let datos = { 'strEmail': this.strEmail };
-
-
-
-    /*let datos = {
-       "jsonRaitData": [
-         { 'email': this.email, 'password': this.password },
-         ]
-     }*/
-
-    this.data = this.http.post(url, datos, options);
-    this.data.subscribe(data => {
-      console.log(data);
-      //this.navCtrl.push(MainPage);
-      if (data.error) {
-
-        this.fxAlert('Error', data.message);
-        return;
-
-      } else {
-        //this.navCtrl.push(MainPage);
-        //this.strfrWhere = data;
-        this.intAutos = data.row;
-
-        //console.log(this.strfrWhere);
-      }
-    },
-      error => {
-        console.log(error);
-        this.fxAlert('Error', error);
-        return;
-      });
-
-
-
-  }
-
-  fxGetCities() {
-
-    var url = 'http://192.168.1.70/RAIT/v1/getCities.php';
+    console.log('set Makes:');
+    var url = 'http://192.168.1.70/RAIT/v1/getMakes.php';
     //var url = 'https://jsonplaceholder.typicode.com/posts/1';
 
 
@@ -142,7 +91,7 @@ export class GiveridePage {
 
     this.data = this.http.post(url, datos, options);
     this.data.subscribe(data => {
-      console.log(data);
+      console.log('data: ', data);
       //this.navCtrl.push(MainPage);
       if (data.error) {
 
@@ -152,7 +101,7 @@ export class GiveridePage {
       } else {
         //this.navCtrl.push(MainPage);
         //this.strfrWhere = data;
-        this.items = data.row;
+        this.strMakes = data.row;
 
         //console.log(this.strfrWhere);
       }
@@ -165,22 +114,81 @@ export class GiveridePage {
 
 
 
+  }
+
+
+
+  fxSetModels(strModelFx: string) {
+
+    console.log('set Models: ');
+    console.log('modelL ', strModelFx);
+
+    console.log('set Makes:');
+    var url = 'http://192.168.1.70/RAIT/v1/getModels.php';
+    //var url = 'https://jsonplaceholder.typicode.com/posts/1';
+
+    //strModelFx = 'asd';
+
+    let options = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    };
+
+    //let postData = new FormData();
+    //postData.append('email', this.email);
+    //postData.append('password', this.password);
+
+    let datos = { 'strModelFx': strModelFx };
+
+
+
+    /*let datos = {
+       "jsonRaitData": [
+         { 'email': this.email, 'password': this.password },
+         ]
+     }*/
+
+    this.data = this.http.post(url, datos, options);
+    this.data.subscribe(data => {
+      console.log('data: ', data);
+      //this.navCtrl.push(MainPage);
+      if (data.error) {
+
+        this.fxAlert('Error', data.message);
+        return;
+
+      } else {
+        //this.navCtrl.push(MainPage);
+        //this.strfrWhere = data;
+        this.strModels = data.row;
+
+        //console.log(this.strfrWhere);
+      }
+    },
+      error => {
+        console.log(error);
+        this.fxAlert('Error', error);
+        return;
+      });
 
 
   }
 
-  fxGiveRide() {
+  fxAddVehicle() {
 
-    if (this.strgrFrom == '' || this.strgrFrom == undefined || this.strgrFrom.length < 1 ||
-      this.strgrWhere == '' || this.strgrWhere == undefined || this.strgrWhere.length < 1 ||
-      this.strgrDate == '' || this.strgrDate == undefined || this.strgrDate.length < 1) {
+    console.log('add vehicle fx: ');
 
+    if (this.strMake == '' || this.strMake == undefined || this.strMake.length < 1) {
 
       this.fxAlert('Error', 'Favor de llenar los campos');
       return;
+
     } else {
 
-      var url = 'http://192.168.1.70/RAIT/v1/giveRide.php';
+      console.log('aPASSED');
+
+      var url = 'http://192.168.1.70/RAIT/v1/addVehicle.php';
 
       let options = {
         headers: {
@@ -189,19 +197,38 @@ export class GiveridePage {
       };
 
 
+      /*let datos = {
+        'strMake': this.strMake,
+        'strModel': this.strModel,
+        'intYear': this.intYear,
+        'strPlates': this.strPlates,
+        'strDoors': this.strDoors,
+        'intAvailableSeats': this.intAvailableSeats,
+        'bAC': this.bAC,
+        'bAux': this.bAux,
+        'bBT': this.bBT,
+        'bCharger': this.bCharger
+        'strEmail': this.strEmail
+      };*/
+
       let datos = {
-        'strgrFrom': this.strgrFrom,
-        'strgrWhere': this.strgrWhere,
-        'strgrDate': this.strgrDate,
-        'strTime': this.strTime,
-        'strEmail': this.strEmail,
-        'intAuto': this.intAuto
-      };
+        'strMake': this.strMake,
+        'strModel': this.strModel,
+        'intYear': this.intYear,
+        'strPlates': this.strPlates,
+        'strDoors': this.strDoors,
+        'intAvailableSeats': this.intAvailableSeats,
+        'bAC': this.bAC,
+        'bAux': this.bAux,
+        'bBT': this.bBT,
+        'bCharger': this.bCharger,
+        'strEmail': this.strEmail
+            };
 
 
       this.data = this.http.post(url, datos, options);
       this.data.subscribe(data => {
-        console.log(data);
+        console.log('asdAddVehicle : ', data);
         if (data.error) {
 
           this.fxAlert('Error', data.message);
@@ -209,7 +236,8 @@ export class GiveridePage {
 
         } else {
 
-          this.items = data.row;
+          this.fxAlert('Done', data.message);
+          this.navCtrl.push(AddvehiclePage);
 
         }
       },
@@ -223,14 +251,6 @@ export class GiveridePage {
 
   }
 
-  fxConsolelog() {
-    console.log('From: ', this.strgrFrom);
-    console.log('Where: ', this.strgrWhere);
-    console.log('Date: ', this.strgrDate);
-    console.log('Hour: ', this.strgrHour);
-
-
-  }
 
 
 

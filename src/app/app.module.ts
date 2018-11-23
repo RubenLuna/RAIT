@@ -12,6 +12,8 @@ import { Register3Page } from '../pages/register3/register3';
 import { MainPage } from '../pages/main/main';
 import { GiveridePage } from '../pages/giveride/giveride';
 import { FindridePage } from '../pages/findride/findride';
+import { AddvehiclePage } from '../pages/addvehicle/addvehicle';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapComponent } from '../components/google-map/google-map';
@@ -29,6 +31,7 @@ import { TestPage } from '../pages/test/test';
     GoogleMapComponent,
     FindridePage,
     GiveridePage,
+    AddvehiclePage,
     TestPage
   ],
   imports: [
@@ -52,6 +55,7 @@ import { TestPage } from '../pages/test/test';
     MainPage,
     FindridePage,
     GiveridePage,
+    AddvehiclePage,
     TestPage
   ],
   providers: [
